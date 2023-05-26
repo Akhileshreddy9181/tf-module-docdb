@@ -13,6 +13,12 @@ resource "aws_docdb_cluster" "main" {
   storage_encrypted = var.storage_encrypted
 }
 
+resource "aws_docdb_cluster_instance" "cluster_instances" {
+  count              = 2
+  identifier         = "docdb-cluster-demo-${count.index}"
+  cluster_identifier = aws_docdb_cluster.default.id
+  instance_class     = "db.r5.large"
+}
 
 resource "aws_docdb_subnet_group" "main" {
   name       = "${var.env}-docdb"
