@@ -66,7 +66,7 @@ resource "aws_ssm_parameter" "docdb_url_catalogue" {
 }
 
 resource "aws_ssm_parameter" "docdb_url_user" {
-  name  = "${var.env}.docdb.url.catalogue"
+  name  = "${var.env}.docdb.url.user"
   type  = "String"
   value = "mongodb://${data.aws_ssm_parameter.user.value}:${data.aws_ssm_parameter.pass.value}@mongodb:27017/catalogue?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 }
